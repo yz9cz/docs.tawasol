@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Company Payment API - التوثيق الكامل</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Password Protection Modal -->
+    <div id="password-modal" class="password-modal">
+        <div class="password-modal-content">
+            <div class="password-header">
+                <i class="fas fa-lock"></i>
+                <h2>Multi-Company Payment API</h2>
+                <p>يرجى إدخال API Token للوصول إلى التوثيق</p>
+            </div>
+            <form id="password-form">
+                <div class="password-input-group">
+                    <input type="password" id="password-input" placeholder="أدخل API Token" required>
+                    <button type="submit" class="password-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div id="password-error" class="password-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden by default) -->
+    <div id="main-content" class="main-content">
+        <!-- Navigation -->
+        <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-credit-card"></i>
+                <span>Multi-Company Payment API</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#overview" class="nav-link">نظرة عامة</a></li>
+                <li><a href="#companies" class="nav-link">الشركات المدعومة</a></li>
+                <li><a href="#api-docs" class="nav-link">توثيق API</a></li>
+                <li><a href="#examples" class="nav-link">أمثلة</a></li>
+                <li><a href="#testing" class="nav-link">اختبار API</a></li>
+                <li><a href="#" class="nav-link logout-btn" onclick="logout()">تسجيل الخروج</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Multi-Company Payment API</h1>
+            <p>نظام دفع موحد يدعم معالجة المدفوعات لعدة شركات مع رسائل حالة باللغة العربية</p>
+            <div class="hero-buttons">
+                <a href="#api-docs" class="btn btn-primary">ابدأ الآن</a>
+                <a href="#testing" class="btn btn-secondary">اختبر API</a>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="payment-cards">
+                <div class="card card-1">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Bitakat</span>
+                </div>
+                <div class="card card-2">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>MTS</span>
+                </div>
+                <div class="card card-3">
+                    <i class="fas fa-wifi"></i>
+                    <span>Inet</span>
+                </div>
+                <div class="card card-4">
+                    <i class="fas fa-globe"></i>
+                    <span>Sawa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">نظرة عامة</h2>
+            <div class="overview-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>دعم متعدد الشركات</h3>
+                    <p>يدعم النظام 7 شركات مختلفة مع معالجة مستقلة لكل شركة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>دعم اللغة العربية</h3>
+                    <p>جميع رسائل الحالة والأخطاء متوفرة باللغة العربية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>معالجة آمنة للأخطاء</h3>
+                    <p>نظام شامل لمعالجة الأخطاء مع آليات إعادة المحاولة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>تتبع فوري</h3>
+                    <p>تتبع حالة المدفوعات في الوقت الفعلي مع طوابع زمنية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Companies Section -->
+    <section id="companies" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">الشركات المدعومة</h2>
+            <div class="companies-grid">
+                <div class="company-card">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Bitakat</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 50</p>
+                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>MTS</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 32</p>
+                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Inet</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 47</p>
+                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Takamol</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 45</p>
+                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Lema</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 148</p>
+                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                    </div>
+                </div>
+                <div class="company-card">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Linet</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 46</p>
+                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                    </div>
+                </div>
+                <div class="company-card maintenance">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Sawa</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 29</p>
+                        <p><strong>طريقة المعالجة:</strong> المتصفح</p>
+                        <div class="maintenance-note">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>في حالة صيانة - لا تعمل حالياً</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-card maintenance">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Syriatel</h3>
+                    </div>
+                    <div class="company-details">
+                        <p><strong>معرف المنتج:</strong> 30</p>
+                        <p><strong>طريقة المعالجة:</strong> المتصفح</p>
+                        <div class="maintenance-note">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>في حالة صيانة - لا تعمل حالياً</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-card development">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>Pro Net</h3>
+                    </div>
+                    <div class="company-details">
+                        <div class="development-note">
+                            <i class="fas fa-code"></i>
+                            <span>قيد التطوير</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-card development">
+                    <div class="company-header">
+                        <i class="fas fa-wifi company-icon"></i>
+                        <h3>الجمعية العلمية</h3>
+                    </div>
+                    <div class="company-details">
+                        <div class="development-note">
+                            <i class="fas fa-code"></i>
+                            <span>قيد التطوير</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Documentation Section -->
+    <section id="api-docs" class="section">
+        <div class="container">
+            <h2 class="section-title">توثيق API</h2>
+            
+            <!-- Input Schema -->
+            <div class="api-section">
+                <h3>نموذج الإدخال</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>JSON Schema</span>
+                        <button class="copy-btn" onclick="copyToClipboard('input-schema')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre id="input-schema"><code>{
+  "id": 587193,
+  "amount": "38000",
+  "number": "944123456",
+  "code": "01",
+  "product": 50,
+  "type": "1 MB",
+  "date": "2025-08-07T16:06:33.000000Z"
+}</code></pre>
+                </div>
+                
+                <div class="parameters-table">
+                    <h4>معاملات الإدخال</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>المعامل</th>
+                                <th>النوع</th>
+                                <th>مطلوب</th>
+                                <th>الوصف</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>id</code></td>
+                                <td>integer</td>
+                                <td>✅</td>
+                                <td>معرف الطلب الفريد</td>
+                            </tr>
+                            <tr>
+                                <td><code>amount</code></td>
+                                <td>string</td>
+                                <td>✅</td>
+                                <td>مبلغ الدفع</td>
+                            </tr>
+                            <tr>
+                                <td><code>number</code></td>
+                                <td>string</td>
+                                <td>✅</td>
+                                <td>رقم الطلب</td>
+                            </tr>
+                            <tr>
+                                <td><code>code</code></td>
+                                <td>string</td>
+                                <td>❌</td>
+                                <td>رمز المحافظة (يمكن أن يكون فارغ)</td>
+                            </tr>
+                            <tr>
+                                <td><code>product</code></td>
+                                <td>integer</td>
+                                <td>✅</td>
+                                <td>معرف المنتج (50, 32, 47, 45, 148, 46, 29, 30, 60, 70)</td>
+                            </tr>
+                            <tr>
+                                <td><code>type</code></td>
+                                <td>string</td>
+                                <td>✅</td>
+                                <td>نوع المنتج</td>
+                            </tr>
+                            <tr>
+                                <td><code>date</code></td>
+                                <td>string</td>
+                                <td>✅</td>
+                                <td>تاريخ الطلب بصيغة ISO</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Output Schema -->
+            <div class="api-section">
+                <h3>نموذج الإخراج</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>Response JSON</span>
+                        <button class="copy-btn" onclick="copyToClipboard('output-schema')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <pre id="output-schema"><code>{
+  "id": 587193,
+  "amount": "38000",
+  "number": "944123456",
+  "code": "01",
+  "product": 50,
+  "type": "1 MB",
+  "date": "2025-08-07T16:06:33.000000Z",
+  "status": 1,
+  "message": "تم الدفع بنجاح",
+  "timestamp": "2025-08-11T10:30:45.123456Z"
+}</code></pre>
+                </div>
+                
+                <div class="status-codes">
+                    <h4>رموز الحالة</h4>
+                    <div class="status-grid">
+                        <div class="status-item success">
+                            <div class="status-code">1</div>
+                            <div class="status-info">
+                                <h5>تم الدفع بنجاح</h5>
+                                <p>تم معالجة الدفع بنجاح</p>
+                            </div>
+                        </div>
+                        <div class="status-item error">
+                            <div class="status-code">2</div>
+                            <div class="status-info">
+                                <h5>خطأ الرقم أو الشركة</h5>
+                                <p>الرقم غير صحيح أو الشركة غير مدعومة</p>
+                            </div>
+                        </div>
+                        <div class="status-item warning">
+                            <div class="status-code">3</div>
+                            <div class="status-info">
+                                <h5>مشكلة تقنية</h5>
+                                <p>حدث خطأ تقني أثناء المعالجة</p>
+                            </div>
+                        </div>
+                        <div class="status-item debt">
+                            <div class="status-code">4</div>
+                            <div class="status-info">
+                                <h5>يوجد دين على المشترك</h5>
+                                <p>لا يمكن إتمام العملية بسبب وجود دين</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">أمثلة الاستخدام</h2>
+
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3>مثال - حالة 1: تم الدفع بنجاح</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>طلب</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-success-request')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-success-request"><code>{
+  "id": 587193,
+  "amount": "38000",
+  "number": "944123456",
+  "code": "01",
+  "product": 50,
+  "type": "1 MB",
+  "date": "2025-08-07T16:06:33.000000Z"
+}</code></pre>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>استجابة</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-success-response')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-success-response"><code>{
+  "id": 587193,
+  "amount": "38000",
+  "number": "944123456",
+  "code": "01",
+  "product": 50,
+  "type": "1 MB",
+  "date": "2025-08-07T16:06:33.000000Z",
+  "status": 1,
+  "message": "تم الدفع بنجاح",
+  "timestamp": "2025-08-11T10:30:45.123456Z"
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>مثال - حالة 2: خطأ الرقم أو الشركة</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>طلب</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-number-error-request')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-number-error-request"><code>{
+  "id": 123456,
+  "amount": "25000",
+  "number": "999999999",
+  "code": "02",
+  "product": 32,
+  "type": "تغذية رصيد",
+  "date": "2025-08-11T12:00:00.000000Z"
+}</code></pre>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>استجابة</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-number-error-response')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-number-error-response"><code>{
+  "id": 123456,
+  "amount": "25000",
+  "number": "999999999",
+  "code": "02",
+  "product": 32,
+  "type": "تغذية رصيد",
+  "date": "2025-08-11T12:00:00.000000Z",
+  "status": 2,
+  "message": "خطأ الرقم أو الشركة",
+  "timestamp": "2025-08-11T12:01:30.456789Z"
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>مثال - حالة 3: مشكلة تقنية</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>طلب</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-technical-error-request')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-technical-error-request"><code>{
+  "id": 789012,
+  "amount": "15000",
+  "number": "933123456",
+  "code": "03",
+  "product": 47,
+  "type": "2 MB",
+  "date": "2025-08-11T14:00:00.000000Z"
+}</code></pre>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>استجابة</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-technical-error-response')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-technical-error-response"><code>{
+  "id": 789012,
+  "amount": "15000",
+  "number": "933123456",
+  "code": "03",
+  "product": 47,
+  "type": "2 MB",
+  "date": "2025-08-11T14:00:00.000000Z",
+  "status": 3,
+  "message": "فشل الاتصال بخادم الشركة، تعذر إتمام عملية الدفع",
+  "timestamp": "2025-08-11T14:05:15.789012Z"
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>مثال - حالة 4: يوجد دين على المشترك</h3>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>طلب</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-debt-request')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-debt-request"><code>{
+  "id": 456789,
+  "amount": "50000",
+  "number": "955123456",
+  "code": "04",
+  "product": 45,
+  "type": "تغذية رصيد",
+  "date": "2025-08-11T16:00:00.000000Z"
+}</code></pre>
+                    </div>
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>استجابة</span>
+                            <button class="copy-btn" onclick="copyToClipboard('example-debt-response')">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <pre id="example-debt-response"><code>{
+  "id": 456789,
+  "amount": "50000",
+  "number": "955123456",
+  "code": "04",
+  "product": 45,
+  "type": "تغذية رصيد",
+  "date": "2025-08-11T16:00:00.000000Z",
+  "status": 4,
+  "message": "المبلغ المطلوب 38000",
+  "timestamp": "2025-08-11T16:02:45.321654Z"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Testing Section -->
+    <section id="testing" class="section">
+        <div class="container">
+            <h2 class="section-title">اختبار API</h2>
+            <div class="api-tester">
+                <div class="tester-form">
+                    <h3>اختبر API مباشرة</h3>
+
+                    <!-- API Endpoint Display -->
+                    <div class="api-endpoint-display">
+                        <div class="endpoint-header">
+                            <i class="fas fa-link"></i>
+                            <span>API Endpoint</span>
+                        </div>
+                        <div class="endpoint-url">
+                            <code>https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/runs</code>
+                            <button class="copy-endpoint-btn" onclick="copyEndpoint()" title="نسخ الرابط">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <div class="endpoint-method">
+                            <span class="method-badge">POST</span>
+                            <span class="auth-info">يتطلب API Token</span>
+                        </div>
+                    </div>
+
+                    <form id="api-test-form">
+                        <div class="form-group">
+                            <label for="api-token">API Token:</label>
+                            <input type="text" id="api-token" placeholder="apify_api_xxxxxxxxxxxxxxxxxxxxxxxxxx" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="test-id">معرف الطلب:</label>
+                                <input type="number" id="test-id" value="587193" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="test-amount">المبلغ:</label>
+                                <input type="text" id="test-amount" value="38000" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="test-number">رقم الهاتف:</label>
+                                <input type="text" id="test-number" value="944123456" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="test-code">رمز المحافظة:</label>
+                                <input type="text" id="test-code" placeholder="اختياري">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="test-product">معرف المنتج:</label>
+                                <select id="test-product" required>
+                                    <option value="50">50 - Bitakat</option>
+                                    <option value="32">32 - MTS</option>
+                                    <option value="47">47 - Inet</option>
+                                    <option value="45">45 - Takamol</option>
+                                    <option value="148">148 - Lema</option>
+                                    <option value="46">46 - Linet</option>
+                                    <option value="29">29 - Sawa (صيانة)</option>
+                                    <option value="30">30 - Syriatel (صيانة)</option>
+                                    <option value="60">60 - Pro Net (قيد التطوير)</option>
+                                    <option value="70">70 - الجمعية العلمية (قيد التطوير)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="test-type">نوع المنتج:</label>
+                                <select id="test-type" required>
+                                    <option value="تغذية رصيد">تغذية رصيد</option>
+                                    <option value="1 MB">1 MB</option>
+                                    <option value="2 MB">2 MB</option>
+                                    <option value="3 MB">3 MB</option>
+                                    <option value="4 MB">4 MB</option>
+                                    <option value="5 MB">5 MB</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="test-date">التاريخ:</label>
+                            <input type="datetime-local" id="test-date" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال الطلب
+                        </button>
+                    </form>
+                </div>
+
+                <div class="tester-response">
+                    <h3>الاستجابة</h3>
+                    <div id="response-container">
+                        <div class="response-placeholder">
+                            <i class="fas fa-code"></i>
+                            <p>ستظهر الاستجابة هنا بعد إرسال الطلب</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Multi-Company Payment API</h4>
+                    <p>نظام دفع موحد يدعم معالجة المدفوعات لعدة شركات</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>2025 Multi-Company Payment API</p>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
