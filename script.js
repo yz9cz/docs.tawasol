@@ -163,10 +163,10 @@ async function sendAPIRequest() {
     `;
 
     try {
-        // Step 1: Start the actor run
-        const runUrl = `https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/runs?token=${apiToken}`;
+        // Make API call using the new endpoint
+        const apiUrl = `https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/run-sync-get-dataset-items?token=${apiToken}`;
 
-        const runResponse = await fetch(runUrl, {
+        const response = await fetch(apiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -175,64 +175,32 @@ async function sendAPIRequest() {
             body: JSON.stringify(formData)
         });
 
-        const runData = await runResponse.json();
+        const responseText = await response.text();
 
-        if (!runResponse.ok) {
-            throw new Error(`Failed to start run: ${runData.error?.message || 'Unknown error'}`);
-        }
-
-        const runId = runData.data.id;
-
-        // Step 2: Wait for the run to complete and get results
-        responseContainer.innerHTML = `
-            <div class="response-placeholder">
-                <div class="loading"></div>
-                <p>تم بدء المعالجة، جاري انتظار اكتمال العملية...</p>
-            </div>
-        `;
-
-        // Poll for completion
-        let attempts = 0;
-        const maxAttempts = 60; // 5 minutes max
-        let finalResult = null;
-
-        while (attempts < maxAttempts) {
-            await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
-
-            // Check run status
-            const statusResponse = await fetch(`https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/runs/${runId}?token=${apiToken}`);
-            const statusData = await statusResponse.json();
-
-            if (statusData.data.status === 'SUCCEEDED') {
-                // Get the dataset items (results)
-                const datasetId = statusData.data.defaultDatasetId;
-                const datasetResponse = await fetch(`https://api.apify.com/v2/datasets/${datasetId}/items?token=${apiToken}`);
-                finalResult = await datasetResponse.json();
-                break;
-            } else if (statusData.data.status === 'FAILED' || statusData.data.status === 'ABORTED') {
-                throw new Error(`Run failed with status: ${statusData.data.status}`);
+        // Try to parse as JSON for display
+        let displayData;
+        try {
+            if (responseText.trim()) {
+                displayData = JSON.parse(responseText);
+            } else {
+                displayData = responseText;
             }
-
-            attempts++;
-
-            // Update progress
-            responseContainer.innerHTML = `
-                <div class="response-placeholder">
-                    <div class="loading"></div>
-                    <p>جاري المعالجة... (${attempts}/${maxAttempts})</p>
-                </div>
-            `;
-        }
-
-        if (!finalResult) {
-            throw new Error('Timeout: Run did not complete within 5 minutes');
+        } catch (jsonError) {
+            displayData = responseText;
         }
 
         // Calculate execution time
         const endTime = Date.now();
         const executionTime = ((endTime - startTime) / 1000).toFixed(2);
 
-        // Show the actual results
+        // Show the results
+        let displayContent;
+        if (typeof displayData === 'string') {
+            displayContent = displayData || '[Empty Response]';
+        } else {
+            displayContent = JSON.stringify(displayData, null, 2);
+        }
+
         responseContainer.innerHTML = `
             <div class="response-success">
                 <h4>✅ تم استلام النتيجة</h4>
@@ -241,7 +209,7 @@ async function sendAPIRequest() {
                     وقت التنفيذ: ${executionTime} ثانية
                 </div>
                 <div class="response-content">
-                    <pre>${JSON.stringify(finalResult, null, 2)}</pre>
+                    <pre>${displayContent}</pre>
                 </div>
                 <button class="copy-btn" onclick="copyResponse()">
                     <i class="fas fa-copy"></i>
@@ -511,7 +479,7 @@ function logout() {
 
 // Copy API endpoint function
 function copyEndpoint() {
-    const endpoint = 'https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/runs';
+    const endpoint = 'https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/run-sync-get-dataset-items';
 
     if (navigator.clipboard) {
         navigator.clipboard.writeText(endpoint).then(() => {
