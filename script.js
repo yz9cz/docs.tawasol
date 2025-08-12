@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initDateField();
     initAnimations();
-    initAnnouncement();
 });
 
 // Password Protection
@@ -470,41 +469,7 @@ function validateForm(formData) {
     return true;
 }
 
-// Announcement Management
-function initAnnouncement() {
-    const announcementBanner = document.querySelector('.announcement-banner');
-    const navbar = document.querySelector('.navbar');
 
-    // Check if announcement was previously closed
-    const announcementClosed = localStorage.getItem('announcement_execution_time_closed');
-
-    if (announcementClosed) {
-        closeAnnouncement();
-    }
-}
-
-function closeAnnouncement() {
-    const announcementBanner = document.querySelector('.announcement-banner');
-    const navbar = document.querySelector('.navbar');
-    const hero = document.querySelector('.hero');
-
-    if (announcementBanner) {
-        announcementBanner.classList.add('hidden');
-
-        // Adjust navbar position
-        if (navbar) {
-            navbar.classList.add('no-announcement');
-        }
-
-        // Adjust hero padding
-        if (hero) {
-            hero.style.paddingTop = '120px';
-        }
-
-        // Remember that user closed the announcement
-        localStorage.setItem('announcement_execution_time_closed', 'true');
-    }
-}
 
 // Logout function
 function logout() {
