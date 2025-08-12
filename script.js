@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScrolling();
     initDateField();
     initAnimations();
+    initAnnouncement();
 });
 
 // Password Protection
@@ -189,9 +190,9 @@ async function sendAPIRequest() {
             displayData = responseText;
         }
 
-        // Calculate execution time
+        // Calculate total request time
         const endTime = Date.now();
-        const executionTime = ((endTime - startTime) / 1000).toFixed(2);
+        const totalRequestTime = ((endTime - startTime) / 1000).toFixed(2);
 
         // Show the results
         let displayContent;
@@ -201,12 +202,23 @@ async function sendAPIRequest() {
             displayContent = JSON.stringify(displayData, null, 2);
         }
 
+        // Extract execution time from response if available
+        let executionTimeInfo = `وقت الطلب الكامل: ${totalRequestTime} ثانية`;
+        if (typeof displayData === 'object' && displayData !== null) {
+            if (displayData.execution_time_seconds) {
+                executionTimeInfo = `
+                    <div>وقت معالجة الأكتور: ${displayData.execution_time_seconds} ثانية (${displayData.execution_time_ms} مللي ثانية)</div>
+                    <div>وقت الطلب الكامل: ${totalRequestTime} ثانية</div>
+                `;
+            }
+        }
+
         responseContainer.innerHTML = `
             <div class="response-success">
                 <h4>✅ تم استلام النتيجة</h4>
                 <div class="execution-time">
                     <i class="fas fa-clock"></i>
-                    وقت التنفيذ: ${executionTime} ثانية
+                    ${executionTimeInfo}
                 </div>
                 <div class="response-content">
                     <pre>${displayContent}</pre>
@@ -219,9 +231,9 @@ async function sendAPIRequest() {
         `;
 
     } catch (error) {
-        // Calculate execution time for error case
+        // Calculate total request time for error case
         const endTime = Date.now();
-        const executionTime = ((endTime - startTime) / 1000).toFixed(2);
+        const totalRequestTime = ((endTime - startTime) / 1000).toFixed(2);
 
         // Show network or other errors
         responseContainer.innerHTML = `
@@ -229,13 +241,12 @@ async function sendAPIRequest() {
                 <h4>❌ خطأ في المعالجة</h4>
                 <div class="execution-time">
                     <i class="fas fa-clock"></i>
-                    وقت التنفيذ: ${executionTime} ثانية
+                    وقت الطلب الكامل: ${totalRequestTime} ثانية
                 </div>
                 <div class="response-content">
                     <pre>${JSON.stringify({
                         error: error.message,
-                        type: 'Processing Error',
-                        timestamp: new Date().toISOString()
+                        type: 'Processing Error'
                     }, null, 2)}</pre>
                 </div>
                 <button class="copy-btn" onclick="copyResponse()">
@@ -447,16 +458,52 @@ function formatJSON(obj) {
 function validateForm(formData) {
     const required = ['id', 'amount', 'number', 'product', 'type', 'date'];
     const missing = required.filter(field => !formData[field]);
-    
+
     if (missing.length > 0) {
         throw new Error(`الحقول المطلوبة مفقودة: ${missing.join(', ')}`);
     }
-    
+
     if (![50, 32, 47, 45, 148, 46, 29].includes(formData.product)) {
         throw new Error(`معرف المنتج غير صحيح: ${formData.product}`);
     }
-    
+
     return true;
+}
+
+// Announcement Management
+function initAnnouncement() {
+    const announcementBanner = document.querySelector('.announcement-banner');
+    const navbar = document.querySelector('.navbar');
+
+    // Check if announcement was previously closed
+    const announcementClosed = localStorage.getItem('announcement_execution_time_closed');
+
+    if (announcementClosed) {
+        closeAnnouncement();
+    }
+}
+
+function closeAnnouncement() {
+    const announcementBanner = document.querySelector('.announcement-banner');
+    const navbar = document.querySelector('.navbar');
+    const hero = document.querySelector('.hero');
+
+    if (announcementBanner) {
+        announcementBanner.classList.add('hidden');
+
+        // Adjust navbar position
+        if (navbar) {
+            navbar.classList.add('no-announcement');
+        }
+
+        // Adjust hero padding
+        if (hero) {
+            hero.style.paddingTop = '120px';
+        }
+
+        // Remember that user closed the announcement
+        localStorage.setItem('announcement_execution_time_closed', 'true');
+    }
 }
 
 // Logout function

@@ -31,6 +31,24 @@
 
     <!-- Main Content (Hidden by default) -->
     <div id="main-content" class="main-content">
+        <!-- New Feature Announcement -->
+        <div class="announcement-banner">
+            <div class="announcement-content">
+                <div class="announcement-icon">
+                    <i class="fas fa-stopwatch"></i>
+                </div>
+                <div class="announcement-text">
+                    <strong>ميزة جديدة!</strong> أصبحت الاستجابة تعرض وقت تنفيذ الطلب مع الرد
+                </div>
+                <div class="announcement-action">
+                    <a href="#new-features" class="announcement-btn">اعرف المزيد</a>
+                </div>
+                <button class="announcement-close" onclick="closeAnnouncement()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
         <!-- Navigation -->
         <nav class="navbar">
         <div class="nav-container">
@@ -41,6 +59,7 @@
             <ul class="nav-menu">
                 <li><a href="#overview" class="nav-link">نظرة عامة</a></li>
                 <li><a href="#companies" class="nav-link">الشركات المدعومة</a></li>
+                <li><a href="#new-features" class="nav-link">الميزات الجديدة</a></li>
                 <li><a href="#api-docs" class="nav-link">توثيق API</a></li>
                 <li><a href="#examples" class="nav-link">أمثلة</a></li>
                 <li><a href="#testing" class="nav-link">اختبار API</a></li>
@@ -244,6 +263,78 @@
         </div>
     </section>
 
+    <!-- New Features Section -->
+    <section id="new-features" class="section">
+        <div class="container">
+            <h2 class="section-title">الميزات الجديدة</h2>
+
+            <div class="features-timeline">
+                <div class="feature-item">
+                    <div class="feature-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>أغسطس 2025</span>
+                    </div>
+                    <div class="feature-content">
+                        <div class="feature-header">
+                            <i class="fas fa-stopwatch feature-icon"></i>
+                            <h3>عرض وقت التنفيذ</h3>
+                            <span class="feature-badge new">جديد</span>
+                        </div>
+                        <div class="feature-description">
+                            <p><strong>أصبحت الاستجابة تعرض وقت تنفيذ الطلب مع الرد</strong></p>
+                            <p>تم إضافة معلومات دقيقة عن وقت التنفيذ في جميع الاستجابات لمساعدتك في مراقبة الأداء وتحسين التطبيقات.</p>
+
+                            <div class="feature-details">
+                                <h4>الحقول الجديدة:</h4>
+                                <ul>
+                                    <li><code>execution_time_seconds</code> - وقت التنفيذ بالثواني (3 أرقام عشرية)</li>
+                                    <li><code>execution_time_ms</code> - وقت التنفيذ بالميلي ثانية (رقم عشري واحد)</li>
+                                </ul>
+                            </div>
+
+                            <div class="feature-example">
+                                <h4>مثال على الاستجابة الجديدة:</h4>
+                                <div class="code-block">
+                                    <pre><code>{
+  "id": 587193,
+  "amount": "38000",
+  "number": "6589536",
+  "status": 1,
+  "message": "تم الدفع بنجاح",
+  "execution_time_seconds": 2.456,
+  "execution_time_ms": 2456.0
+}</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="feature-benefits">
+                                <h4>الفوائد:</h4>
+                                <div class="benefits-grid">
+                                    <div class="benefit-item">
+                                        <i class="fas fa-chart-line"></i>
+                                        <span>مراقبة الأداء</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-bug"></i>
+                                        <span>تشخيص المشاكل</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>تحسين السرعة</span>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>تتبع الزمن</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- API Documentation Section -->
     <section id="api-docs" class="section">
         <div class="container">
@@ -349,7 +440,8 @@
   "date": "2025-08-07T16:06:33.000000Z",
   "status": 1,
   "message": "تم الدفع بنجاح",
-  "timestamp": "2025-08-11T10:30:45.123456Z"
+  "execution_time_seconds": 2.456,
+  "execution_time_ms": 2456.0
 }</code></pre>
                 </div>
                 
@@ -432,7 +524,8 @@
   "date": "2025-08-07T16:06:33.000000Z",
   "status": 1,
   "message": "تم الدفع بنجاح",
-  "timestamp": "2025-08-11T10:30:45.123456Z"
+  "execution_time_seconds": 2.456,
+  "execution_time_ms": 2456.0
 }</code></pre>
                     </div>
                 </div>
@@ -473,7 +566,8 @@
   "date": "2025-08-11T12:00:00.000000Z",
   "status": 2,
   "message": "خطأ الرقم أو الشركة",
-  "timestamp": "2025-08-11T12:01:30.456789Z"
+  "execution_time_seconds": 1.234,
+  "execution_time_ms": 1234.0
 }</code></pre>
                     </div>
                 </div>
@@ -514,7 +608,8 @@
   "date": "2025-08-11T14:00:00.000000Z",
   "status": 3,
   "message": "فشل الاتصال بخادم الشركة، تعذر إتمام عملية الدفع",
-  "timestamp": "2025-08-11T14:05:15.789012Z"
+  "execution_time_seconds": 5.678,
+  "execution_time_ms": 5678.0
 }</code></pre>
                     </div>
                 </div>
@@ -555,7 +650,8 @@
   "date": "2025-08-11T16:00:00.000000Z",
   "status": 4,
   "message": "المبلغ المطلوب 38000",
-  "timestamp": "2025-08-11T16:02:45.321654Z"
+  "execution_time_seconds": 3.210,
+  "execution_time_ms": 3210.0
 }</code></pre>
                     </div>
                 </div>
