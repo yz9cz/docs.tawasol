@@ -61,19 +61,19 @@ function initLoginSystem() {
                     username: "developer",
                     password: "dev2024",
                     role: "developer",
-                    name: "مطور النظام"
+                    name: "المبرمجة"
                 },
                 {
-                    username: "tester",
-                    password: "test123",
+                    username: "jihad",
+                    password: "jihad1234",
                     role: "tester",
-                    name: "مختبر النظام"
+                    name: "جهاد شوحكر"
                 },
                 {
-                    username: "user1",
-                    password: "user123",
+                    username: "yazan",
+                    password: "yazan1234",
                     role: "user",
-                    name: "مستخدم عادي"
+                    name: "يزن اللحام"
                 },
                 {
                     username: "api_user",
