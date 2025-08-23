@@ -9,22 +9,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Password Protection Modal -->
-    <div id="password-modal" class="password-modal">
-        <div class="password-modal-content">
-            <div class="password-header">
-                <i class="fas fa-lock"></i>
+    <!-- Login Modal -->
+    <div id="login-modal" class="login-modal">
+        <div class="login-modal-content">
+            <div class="login-header">
+                <i class="fas fa-user-shield"></i>
                 <h2>Multi-Company Payment API</h2>
-                <p>يرجى إدخال API Token للوصول إلى التوثيق</p>
+                <p>يرجى تسجيل الدخول للوصول إلى التوثيق</p>
             </div>
-            <form id="password-form">
-                <div class="password-input-group">
-                    <input type="password" id="password-input" placeholder="أدخل API Token" required>
-                    <button type="submit" class="password-btn">
-                        <i class="fas fa-arrow-right"></i>
+            <form id="login-form">
+                <div class="login-input-group">
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username-input" placeholder="اسم المستخدم" required>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password-input" placeholder="كلمة المرور" required>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>تسجيل الدخول</span>
                     </button>
                 </div>
-                <div id="password-error" class="password-error"></div>
+                <div id="login-error" class="login-error"></div>
             </form>
         </div>
     </div>
@@ -35,7 +43,6 @@
         <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <span>Multi-Company Payment API</span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#overview" class="nav-link">نظرة عامة</a></li>
@@ -56,64 +63,123 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Multi-Company Payment API</h1>
-            <p>نظام دفع موحد يدعم معالجة المدفوعات لعدة شركات مع رسائل حالة باللغة العربية</p>
-            <div class="hero-buttons">
-                <a href="#api-docs" class="btn btn-primary">ابدأ الآن</a>
-                <a href="#testing" class="btn btn-secondary">اختبر API</a>
+        <!-- Animated Background Elements -->
+        <div class="tech-background">
+            <div class="floating-particles"></div>
+            <div class="circuit-lines">
+                <div class="circuit-line line-1"></div>
+                <div class="circuit-line line-2"></div>
+                <div class="circuit-line line-3"></div>
+                <div class="circuit-line line-4"></div>
+            </div>
+            <div class="tech-grid"></div>
+            <div class="data-streams">
+                <div class="data-stream stream-1"></div>
+                <div class="data-stream stream-2"></div>
+                <div class="data-stream stream-3"></div>
             </div>
         </div>
+
+        <div class="hero-content">
+            <div class="hero-title-container">
+                <h1 class="glitch-text" data-text="Multi-Company Payment API">Multi-Company Payment API</h1>
+                <div class="title-underline"></div>
+            </div>
+            <p class="hero-description">نظام دفع موحد يدعم معالجة المدفوعات لعدة شركات مع رسائل حالة باللغة العربية</p>
+            <div class="hero-buttons">
+                <a href="#api-docs" class="btn btn-primary tech-btn">
+                    <span class="btn-text">ابدأ الآن</span>
+                    <div class="btn-particles"></div>
+                </a>
+                <a href="#testing" class="btn btn-secondary tech-btn">
+                    <span class="btn-text">اختبر API</span>
+                    <div class="btn-particles"></div>
+                </a>
+            </div>
+        </div>
+
         <div class="hero-animation">
             <div class="payment-cards">
-                <div class="card card-1">
-                    <i class="fas fa-credit-card"></i>
-                    <span>Bitakat</span>
+                <div class="card card-1 tech-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Bitakat</span>
+                        <div class="card-status active"></div>
+                    </div>
+                    <div class="card-circuit"></div>
                 </div>
-                <div class="card card-2">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>MTS</span>
+                <div class="card card-2 tech-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>MTS</span>
+                        <div class="card-status active"></div>
+                    </div>
+                    <div class="card-circuit"></div>
                 </div>
-                <div class="card card-3">
-                    <i class="fas fa-wifi"></i>
-                    <span>Inet</span>
-                </div>
-                <div class="card card-4">
-                    <i class="fas fa-globe"></i>
-                    <span>Sawa</span>
+                <div class="card card-3 tech-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <i class="fas fa-wifi"></i>
+                        <span>Inet</span>
+                        <div class="card-status active"></div>
+                    </div>
+                    <div class="card-circuit"></div>
                 </div>
             </div>
+
+
         </div>
     </section>
 
     <!-- Overview Section -->
-    <section id="overview" class="section">
+    <section id="overview" class="section tech-section">
+        <div class="tech-section-bg">
+            <div class="matrix-rain"></div>
+            <div class="tech-overlay"></div>
+        </div>
         <div class="container">
-            <h2 class="section-title">نظرة عامة</h2>
-            <div class="overview-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
+            <h2 class="title-text tech-title">
+                <span class="title-text">نظرة عامة</span>
+                <div class="title-decoration">
+                    <div class="tech-line"></div>
+                    <div class="tech-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="tech-line"></div>
+                </div>
+            </h2>
+            <div class="overview-grid tech-features-grid">
+                <div class="feature-card tech-feature-card">
+                    <div class="feature-tech-bg"></div>
+                    <div class="feature-icon tech-icon">
                         <i class="fas fa-building"></i>
+                        <div class="icon-orbit"></div>
                     </div>
                     <h3>دعم متعدد الشركات</h3>
-                    <p>يدعم النظام 7 شركات مختلفة مع معالجة مستقلة لكل شركة</p>
+                    <p>يدعم النظام 10 شركات مختلفة مع معالجة مستقلة لكل شركة</p>
+                    <div class="feature-tech-line"></div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card tech-feature-card">
+                    <div class="feature-tech-bg"></div>
+                    <div class="feature-icon tech-icon">
                         <i class="fas fa-language"></i>
                     </div>
                     <h3>دعم اللغة العربية</h3>
                     <p>جميع رسائل الحالة والأخطاء متوفرة باللغة العربية</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card tech-feature-card">
+                    <div class="feature-tech-bg"></div>
+                    <div class="feature-icon tech-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>معالجة آمنة للأخطاء</h3>
                     <p>نظام شامل لمعالجة الأخطاء مع آليات إعادة المحاولة</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
+                <div class="feature-card tech-feature-card">
+                    <div class="feature-tech-bg"></div>
+                    <div class="feature-icon tech-icon">
                         <i class="fas fa-clock"></i>
                     </div>
                     <h3>تتبع فوري</h3>
@@ -124,186 +190,390 @@
     </section>
 
     <!-- Supported Companies Section -->
-    <section id="companies" class="section bg-light">
+    <section id="companies" class="section bg-light tech-section">
+        <div class="tech-section-bg">
+            <div class="matrix-rain"></div>
+            <div class="tech-overlay"></div>
+        </div>
         <div class="container">
-            <h2 class="section-title">الشركات المدعومة</h2>
-            <div class="companies-grid">
-                <div class="company-card">
+            <h2 class="title-text tech-title">
+                <span class="title-text">الشركات المدعومة</span>
+                <div class="title-decoration">
+                    <div class="tech-line"></div>
+                    <div class="tech-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="tech-line"></div>
+                </div>
+            </h2>
+            <div class="companies-grid tech-grid">
+                <div class="company-card tech-company-card" data-company="bitakat">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Bitakat</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 50</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>50</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card">
+                <div class="company-card tech-company-card" data-company="mts">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>MTS</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 32</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>32</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card">
+                <div class="company-card tech-company-card" data-company="inet">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Inet</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 47</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>47</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card">
+                <div class="company-card tech-company-card" data-company="takamol">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Takamol</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 45</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>45</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card">
+                <div class="company-card tech-company-card" data-company="lema">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Lema</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 148</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>148</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card">
+                <div class="company-card tech-company-card" data-company="linet">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Linet</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 46</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>46</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                    <div class="company-card">
+                <div class="company-card tech-company-card" data-company="scs">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>SCS</h3>
-                    </div>
-                    <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 33</p>
-                        <p><strong>طريقة المعالجة:</strong> API مباشر</p>
-                    </div>
-                </div>
-                <div class="company-card maintenance">
-                    <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
-                        <h3>Sawa</h3>
-                    </div>
-                    <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 29</p>
-                        <p><strong>طريقة المعالجة:</strong> المتصفح</p>
-                        <div class="maintenance-note">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <span>في حالة صيانة - لا تعمل حالياً</span>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
                         </div>
                     </div>
+                    <div class="company-details">
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>33</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">API مباشر</span>
+                        </div>
+
+                    </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card maintenance">
+                <div class="company-card tech-company-card special" data-company="sawa">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
+                        <h3>sawa</h3>
+                        <div class="company-status online">
+                            <span class="status-dot"></span>
+                            <span class="status-text">متصل</span>
+                        </div>
+                    </div>
+                    <div class="company-details">
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>29</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">Chrome Driver</span>
+                        </div>
+                        <div class="special-note">
+                            <i class="fas fa-info-circle"></i>
+                            <span>يستخدم Chrome Driver - وقت معالجة أطول</span>
+                        </div>
+
+                    </div>
+                    <div class="card-tech-border"></div>
+                </div>
+                <div class="company-card tech-company-card maintenance" data-company="syriatel">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
+                    <div class="company-header">
+                        <div class="company-icon-container">
+                            <i class="fas fa-mobile-alt company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Syriatel</h3>
+                        <div class="company-status offline">
+                            <span class="status-dot" style="background: #ff4757; box-shadow: 0 0 10px #ff4757;"></span>
+                            <span class="status-text">صيانة</span>
+                        </div>
                     </div>
                     <div class="company-details">
-                        <p><strong>معرف المنتج:</strong> 25</p>
-                        <p><strong>طريقة المعالجة:</strong> المتصفح</p>
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>30</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">المتصفح</span>
+                        </div>
                         <div class="maintenance-note">
                             <i class="fas fa-exclamation-triangle"></i>
                             <span>في حالة صيانة - لا تعمل حالياً</span>
                         </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
-                <div class="company-card development">
+                <div class="company-card tech-company-card development" data-company="pronet">
+                    <div class="card-tech-bg"></div>
+                    <div class="card-scan-line"></div>
                     <div class="company-header">
-                        <i class="fas fa-wifi company-icon"></i>
+                        <div class="company-icon-container">
+                            <i class="fas fa-wifi company-icon"></i>
+                            <div class="icon-pulse"></div>
+                        </div>
                         <h3>Pro Net</h3>
+                        <div class="company-status development">
+                            <span class="status-dot" style="background: #3742fa; box-shadow: 0 0 10px #3742fa;"></span>
+                            <span class="status-text">قيد التطوير</span>
+                        </div>
                     </div>
                     <div class="company-details">
+                        <div class="detail-item">
+                            <span class="detail-label">معرف المنتج:</span>
+                            <span>60</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">طريقة المعالجة:</span>
+                            <span class="detail-value">قيد التطوير</span>
+                        </div>
                         <div class="development-note">
                             <i class="fas fa-code"></i>
                             <span>قيد التطوير</span>
                         </div>
+
                     </div>
+                    <div class="card-tech-border"></div>
                 </div>
+
             </div>
         </div>
     </section>
 
+
+
+    
     <!-- New Features Section -->
     <section id="new-features" class="section">
         <div class="container">
-            <h2 class="section-title">الميزات الجديدة</h2>
-
-            <div class="features-timeline">
-                <div class="feature-item">
-                    <div class="feature-content">
-                        <div class="feature-header">
-                            <h3>عرض وقت التنفيذ</h3>
-                            <span class="feature-badge new">جديد</span>
-                        </div>
-                        <div class="feature-description">
-                            <p><strong>أصبحت الاستجابة تعرض وقت تنفيذ الطلب مع الرد</strong></p>
-                            <p>تم إضافة معلومات دقيقة عن وقت التنفيذ في جميع الاستجابات لمساعدتك في مراقبة الأداء وتحسين التطبيقات.</p>
-
-                            <div class="feature-details">
-                                <h4>الحقول الجديدة:</h4>
-                                <ul>
-                                    <li><code>execution_time_seconds</code> - وقت التنفيذ بالثواني (3 أرقام عشرية)</li>
-                                    <li><code>execution_time_ms</code> - وقت التنفيذ بالميلي ثانية (رقم عشري واحد)</li>
-                                </ul>
-                            </div>
-
-                            <div class="feature-example">
-                                <h4>مثال على الاستجابة الجديدة:</h4>
-                                <div class="code-block">
-                                    <pre><code>{
-  "id": 587193,
-  "amount": "38000",
-  "number": "6589536",
-  "status": 1,
-  "message": "تم الدفع بنجاح",
-  "execution_time_seconds": 2.456,
-  "execution_time_ms": 2456.0
-}</code></pre>
-                                </div>
-                            </div>
-
-                            <div class="feature-benefits">
-                                <h4>الفوائد:</h4>
-                                <div class="benefits-grid">
-                                    <div class="benefit-item">
-                                        <i class="fas fa-chart-line"></i>
-                                        <span>مراقبة الأداء</span>
-                                    </div>
-                                    <div class="benefit-item">
-                                        <i class="fas fa-bug"></i>
-                                        <span>تشخيص المشاكل</span>
-                                    </div>
-                                    <div class="benefit-item">
-                                        <i class="fas fa-tachometer-alt"></i>
-                                        <span>تحسين السرعة</span>
-                                    </div>
-                                    <div class="benefit-item">
-                                        <i class="fas fa-clock"></i>
-                                        <span>تتبع الزمن</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <h2 class="title-text tech-title">
+                <span class="title-text">🎉 إصلاح شامل لشركة sawa</span>
+                <div class="title-decoration">
+                    <div class="tech-line"></div>
+                    <div class="tech-dots">
+                        <span></span><span></span><span></span>
                     </div>
+                    <div class="tech-line"></div>
+                </div>
+            </h2>
+            <div class="sawa-celebration">
+                <div class="celebration-header">
+                    <div class="celebration-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>شركة sawa تعمل الآن بشكل مثالي!</h3>
+                    <p>تم إصلاح جميع المشاكل وتحسين الأداء بشكل كبير</p>
+                </div>
+
+                <div class="improvements-grid">
+                    <div class="improvement-card" data-animation="bounce">
+                        <div class="improvement-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h4>التحقق من الأرقام</h4>
+                        <p>يكتشف الأرقام الخاطئة قبل المعالجة</p>
+                    </div>
+
+                    <div class="improvement-card" data-animation="pulse">
+                        <div class="improvement-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h4>معالجة الديون الذكية</h4>
+                        <p>تطبيق قواعد دقيقة للتحقق من الديون</p>
+                    </div>
+
+                    <div class="improvement-card" data-animation="shake">
+                        <div class="improvement-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h4>رسائل واضحة</h4>
+                        <p>قراءة الرسائل مباشرة من صفحة الويب</p>
+                    </div>
+
+                    <div class="improvement-card" data-animation="flip">
+                        <div class="improvement-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h4>رسائل موحدة</h4>
+                        <p>توحيد الرسائل مع باقي الشركات</p>
+                    </div>
+
+                    <div class="improvement-card" data-animation="zoom">
+                        <div class="improvement-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>أداء محسن</h4>
+                        <p>تحسين السرعة والاستقرار</p>
+                    </div>
+
+                    <div class="improvement-card" data-animation="rotate">
+                        <div class="improvement-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>موثوقية عالية</h4>
+                        <p>استقرار تام في بيئة Apify</p>
+                    </div>
+                </div>
+
+                <div class="celebration-footer">
+                    <button class="celebration-btn" onclick="triggerCelebration()">
+                        <i class="fas fa-party-horn"></i>
+                        احتفل معنا!
+                    </button>
                 </div>
             </div>
         </div>
@@ -312,8 +582,16 @@
     <!-- API Documentation Section -->
     <section id="api-docs" class="section">
         <div class="container">
-            <h2 class="section-title">توثيق API</h2>
-            
+            <h2 class="title-text tech-title">
+                <span class="title-text">توثيق API</span>
+                <div class="title-decoration">
+                    <div class="tech-line"></div>
+                    <div class="tech-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="tech-line"></div>
+                </div>
+            </h2>            
             <!-- Input Schema -->
             <div class="api-section">
                 <h3>نموذج الإدخال</h3>
@@ -375,7 +653,7 @@
                                 <td><code>product</code></td>
                                 <td>integer</td>
                                 <td>✅</td>
-                                <td>معرف المنتج (50, 32, 47, 45, 148, 46, 29, 30, 60, 70)</td>
+                                <td>معرف المنتج (50, 32, 47, 45, 148, 46, 33, 29, 30, 60)</td>
                             </tr>
                             <tr>
                                 <td><code>type</code></td>
@@ -433,21 +711,21 @@
                             <div class="status-code">2</div>
                             <div class="status-info">
                                 <h5>خطأ الرقم أو الشركة</h5>
-                                <p>الرقم غير صحيح أو الشركة غير مدعومة</p>
+                                <p>الرقم المدخل غير صحيح أو غير موجود في قاعدة بيانات الشركة</p>
                             </div>
                         </div>
                         <div class="status-item warning">
                             <div class="status-code">3</div>
                             <div class="status-info">
-                                <h5>مشكلة تقنية</h5>
-                                <p>حدث خطأ تقني أثناء المعالجة</p>
+                                <h5>فشل في عملية الدفع</h5>
+                                <p>حدث خطأ أثناء المعالجة أو تكرار في الدفع أو مشكلة تقنية</p>
                             </div>
                         </div>
                         <div class="status-item debt">
                             <div class="status-code">4</div>
                             <div class="status-info">
-                                <h5>يوجد دين على المشترك</h5>
-                                <p>لا يمكن إتمام العملية بسبب وجود دين</p>
+                                <h5>المبلغ المطلوب أكبر</h5>
+                                <p>المبلغ المدفوع غير كافي - يتم إرسال المبلغ المطلوب في الرسالة</p>
                             </div>
                         </div>
                     </div>
@@ -459,8 +737,16 @@
     <!-- Examples Section -->
     <section id="examples" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">أمثلة الاستخدام</h2>
-
+            <h2 class="title-text tech-title">
+                <span class="title-text">أمثلة الاستخدام</span>
+                <div class="title-decoration">
+                    <div class="tech-line"></div>
+                    <div class="tech-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="tech-line"></div>
+                </div>
+            </h2>
             <div class="examples-grid">
                 <div class="example-card">
                     <h3>مثال - حالة 1: تم الدفع بنجاح</h3>
@@ -636,10 +922,30 @@
     <!-- API Testing Section -->
     <section id="testing" class="section">
         <div class="container">
-            <h2 class="section-title">اختبار API</h2>
-            <div class="api-tester">
+            <h2 class="title-text tech-title">
+                <span class="title-text">اختبار API</span>
+                <div class="title-decoration">
+                    <div class="tech-line"></div>
+                    <div class="tech-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="tech-line"></div>
+                </div>
+            </h2>            <div class="api-tester">
                 <div class="tester-form">
-                    <h3>اختبر API مباشرة</h3>
+                    <div class="tester-header">
+                        <h3>اختبر API مباشرة</h3>
+                        <div class="input-mode-toggle">
+                            <button type="button" class="toggle-btn active" data-mode="form" onclick="switchInputMode('form')">
+                                <i class="fas fa-list"></i>
+                                نموذج
+                            </button>
+                            <button type="button" class="toggle-btn" data-mode="json" onclick="switchInputMode('json')">
+                                <i class="fas fa-code"></i>
+                                JSON
+                            </button>
+                        </div>
+                    </div>
 
                     <!-- API Endpoint Display -->
                     <div class="api-endpoint-display">
@@ -648,7 +954,7 @@
                             <span>API Endpoint</span>
                         </div>
                         <div class="endpoint-url">
-                            <code>https://api.apify.com/v2/acts/brave_ivy~multi-company-payment-actor/run-sync-get-dataset-items</code>
+                            <code>https://api.apify.com/v2/acts/knurled_bucket~multi-company-payment-processor-with-sawa/run-sync-get-dataset-items</code>
                             <button class="copy-endpoint-btn" onclick="copyEndpoint()" title="نسخ الرابط">
                                 <i class="fas fa-copy"></i>
                             </button>
@@ -691,16 +997,17 @@
                             <div class="form-group">
                                 <label for="test-product">معرف المنتج:</label>
                                 <select id="test-product" required>
-                                    <option value="50">50 - Bitakat</option>
-                                    <option value="32">32 - MTS</option>
-                                    <option value="47">47 - Inet</option>
-                                    <option value="45">45 - Takamol</option>
-                                    <option value="148">148 - Lema</option>
-                                    <option value="46">46 - Linet</option>
-                                    <option value="29">29 - Sawa (صيانة)</option>
-                                    <option value="30">30 - Syriatel (صيانة)</option>
-                                    <option value="60">60 - Pro Net (قيد التطوير)</option>
-                                    <option value="70">70 - الجمعية العلمية (قيد التطوير)</option>
+                                    <option value="">اختر الشركة</option>
+                                    <option value="50">Bitakat</option>
+                                    <option value="32">MTS</option>
+                                    <option value="47">Inet</option>
+                                    <option value="45">Takamol</option>
+                                    <option value="148">Lema</option>
+                                    <option value="46">Linet</option>
+                                    <option value="33">SCS</option>
+                                    <option value="29">sawa</option>
+                                    <option value="30">Syriatel (صيانة)</option>
+                                    <option value="60">Pro Net (قيد التطوير)</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -726,6 +1033,40 @@
                             إرسال الطلب
                         </button>
                     </form>
+
+                    <!-- JSON Input Mode -->
+                    <div id="json-input-container" class="json-input-container" style="display: none;">
+                        <div class="json-header">
+                            <h4>إدخال JSON مباشر</h4>
+                            <p class="json-description">يتم تحديث JSON تلقائياً من بيانات النموذج أعلاه</p>
+                            <div class="json-actions">
+                                <button type="button" class="btn-small" onclick="updateJSONFromForm()">
+                                    <i class="fas fa-sync"></i>
+                                    تحديث من النموذج
+                                </button>
+                                <button type="button" class="btn-small" onclick="formatJSON()">
+                                    <i class="fas fa-magic"></i>
+                                    تنسيق
+                                </button>
+                                <button type="button" class="btn-small" onclick="validateJSON()">
+                                    <i class="fas fa-check"></i>
+                                    تحقق
+                                </button>
+                                <button type="button" class="btn-small" onclick="generateSampleJSON()">
+                                    <i class="fas fa-lightbulb"></i>
+                                    مثال
+                                </button>
+                            </div>
+                        </div>
+                        <div class="json-editor">
+                            <textarea id="json-input" placeholder='أدخل JSON هنا أو اضغط "مثال" لإنشاء نموذج'></textarea>
+                            <div id="json-validation" class="json-validation"></div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="sendJSONRequest()">
+                            <i class="fas fa-paper-plane"></i>
+                            إرسال JSON
+                        </button>
+                    </div>
                 </div>
 
                 <div class="tester-response">
